@@ -19,7 +19,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       } transition-all duration-300 ease-in-out`}
     >
         <div className="w-full">
-            <img onClick={()=> navigate('/')} src={assets.hive} alt="" className="w-26 ml-7 my-2 cursor-pointer" sizes={10} />
+            <img onClick={()=> navigate('/')} src={assets.logo} alt="" className="w-26 ml-7 my-2 cursor-pointer" sizes={10} />
             <hr className="border-gray-300 mb-8"/>
 
             <MenuItems setSidebarOpen={setSidebarOpen}/>

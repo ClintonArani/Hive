@@ -6,6 +6,7 @@ import group_users from './group_users.png'
 import { Home, MessageCircle, Search, UserIcon, Users } from 'lucide-react'
 import sponsored_img from './sponsored_img.png'
 import hive from './hivelogo.png'
+import clinton from './clinton.png'
 
 export const assets = {
     logo,
@@ -14,7 +15,8 @@ export const assets = {
     bgImage,
     group_users,
     sponsored_img,
-    hive
+    hive,
+    clinton
 }
 
 export const menuItemsData = [

@@ -42,12 +42,16 @@ export const sendMessage = async (req, res) => {
 
     if (message_type === "image") {
       const fileBuffer = fs.readFileSync(image.path);
+
+      // Upload the image
       const response = await imagekit.upload({
-        file: fileBuffer,
+        file: fileBuffer, // file can be Buffer or base64
         fileName: image.originalname,
       });
-      media_url = imagekit({
-        path: response.filePath,
+
+      // Generate optimized URL
+      media_url = imagekit.url({
+        path: response.filePath, // or response.name
         transformation: [
           { quality: "auto" },
           { format: "webp" },
@@ -113,8 +117,8 @@ export const getUserRecentMessages = async (req, res) => {
   try {
     const { userId } = req.auth();
     const messages = await Message.find(
-      { to_user_id: userId }.populate("from_user_id to_user_id")
-    ).sort({ created_at: -1 });
+      { to_user_id: userId }).populate("from_user_id to_user_id")
+    .sort({ created_at: -1 });
 
     res.json({ success: true, messages });
   } catch (error) {

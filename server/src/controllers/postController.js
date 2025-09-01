@@ -30,23 +30,26 @@ export const addPost = async (req, res) => {
               { width: "1280" },
             ],
           });
-          return url
+          return url;
         })
       );
     }
-    await Post.create({
-        user: userId,
-        content,
-        image_urls,
-        post_type
-    })
 
-    res.json({success: true, message: "Post created successfully"});
+    await Post.create({
+      user: userId,
+      content,
+      image_urls,
+      post_type,
+      comments_count: 0 // ensure it's set explicitly
+    });
+
+    res.json({ success: true, message: "Post created successfully" });
   } catch (error) {
-    console.log(error)
-    res.json({success: false, message: error.message});
+    console.log(error);
+    res.json({ success: false, message: error.message });
   }
 };
+
 
 //Get Posts
 export const getFeedPosts = async (req, res) => {
